@@ -54,10 +54,9 @@ void split(const char *cmd, char *words[], char delimiter) {
   words[word_count] = NULL;
 }
 
-void handle_redirection_pipe_background(char *cmd, char *args[], int pipefd[2],
-                                        int in_fd, int out_fd,
-                                        const char *input_file,
-                                        const char *output_file) {
+void background_redirect(char *cmd, char *args[], int pipefd[2], int in_fd,
+                         int out_fd, const char *input_file,
+                         const char *output_file) {
   pid_t pid = fork();
   if (pid == 0) {
     redirect(input_file, output_file);

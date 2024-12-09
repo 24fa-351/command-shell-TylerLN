@@ -10,7 +10,7 @@
 
 #define PATH_MAX 4096
 
-int handle_internal_command(char *cmd, char *args[]) {
+int directory_command(char *cmd, char *args[]) {
   if (strcmp(cmd, "cd") == 0) {
     if (args[1] == NULL) {
       fprintf(stderr, "cd: missing argument\n");

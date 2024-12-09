@@ -64,7 +64,7 @@ int main() {
         subcmd_args[0] = NULL;
       }
 
-      if (handle_internal_command(subcmd_args[0], subcmd_args)) {
+      if (directory_command(subcmd_args[0], subcmd_args)) {
         continue;
       }
 
@@ -72,9 +72,8 @@ int main() {
         pipe(pipefd);
       }
 
-      handle_redirection_pipe_background(subcmd_args[0], subcmd_args, pipefd,
-                                         prev_fd, pipefd[1], input_file,
-                                         output_file);
+      background_redirect(subcmd_args[0], subcmd_args, pipefd, prev_fd,
+                          pipefd[1], input_file, output_file);
 
       close(pipefd[1]);
       prev_fd = pipefd[0];
